@@ -1,0 +1,55 @@
+$(function(){
+
+	$('#enviar').on('click', function(e){
+		e.preventDefault();
+
+        var Clientes ={
+
+           "f_name" : $("#f_name").val(),
+           "l_name" : $("#l_name").val(),
+           "ci" : $("#ci").val()
+        }
+
+        var jsonClientes = JSON.stringify(Clientes);
+
+		  $.ajax({
+            // la URL para la petición
+            url : 'http://localhost/e_commerceApi/clientes',
+         
+            // la información a enviar
+            // (también es posible utilizar una cadena de datos)
+            data : jsonClientes,
+         
+            // especifica si será una petición POST o GET
+            type : 'POST',
+         
+            // el tipo de información que se espera de respuesta
+            dataType : 'json',
+         
+            // código a ejecutar si la petición es satisfactoria;
+            // la respuesta es pasada como argumento a la función
+            success : function(json) {
+                console.log(json);
+               /* $('<h1/>').text(json.title).appendTo('body');
+                $('<div class="content"/>').html(json.html).appendTo('body');*/
+            },
+         
+            // código a ejecutar si la petición falla;
+            // son pasados como argumentos a la función
+            // el objeto de la petición en crudo y código de estatus de la petición
+            error : function(xhr, status) {
+                /*alert('Disculpe, existió un problema');*/
+                console.log(xhr +" " + status);
+            },
+         
+            // código a ejecutar sin importar si la petición falló o no
+            complete : function(xhr, status) {
+                alert('Petición realizada');
+            }
+});
+	});
+
+
+
+
+});//end main function
