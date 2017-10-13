@@ -1,20 +1,29 @@
 <?php
 
 /**
-* 
+*
 */
-class ClassName extends AnotherClass
+class Session
 {
-	
-	function __construct(argument)
+
+	function __construct()
 	{
-		# code...
+		session_start ();
 	}
 
+	public function set($user_name, $valor) {
 
-	
+		$_SESSION [$user_name] = $valor;
 
+	}
 
+	public function get($nombre) {
 
-	
+			if (isset ( $_SESSION [$nombre] )) {
+				return $_SESSION [$nombre];
+			} else {
+				return false;
+			}
+	}
+
 }

@@ -51,8 +51,8 @@ class loginController implements iCallWs
 
 		if($this->decodeResponse()->rc == 200){
 			session_start();
-			$_SESSION["user_name"] = "variable de session " . $this->decodeResponse()->data[0]->user_name;;
-			//echo $_SESSION["user_name"];
+			$_SESSION["user_name"] = "variable de session " . $this->decodeResponse()->data[0]->user_name;
+
 		}
 
 	}
