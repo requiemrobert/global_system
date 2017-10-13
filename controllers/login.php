@@ -10,14 +10,14 @@ class loginController implements iCallWs
 	private $get_request;
 
 	public static $responseJson;
-	
+
 	public function __construct(){
 
 		$strJson = $this->decodeRequest(file_get_contents("php://input"));
 		$this->sendRequest($strJson);
 	}
 
-	public function decodeRequest($file = ''){		
+	public function decodeRequest($file = ''){
 
 		$decode_data = ['rc'=>'get_login', 'data' =>json_decode($file)];
 
@@ -34,7 +34,7 @@ class loginController implements iCallWs
 		print JSON WS
 	*/
 
-	public function response(){	
+	public function response(){
 
 		echo self::$responseJson;
 	}
@@ -54,7 +54,7 @@ class loginController implements iCallWs
 			$_SESSION["user_name"] = "variable de session " . $this->decodeResponse()->data[0]->user_name;;
 			//echo $_SESSION["user_name"];
 		}
-	 
+
 	}
 
 	public function redirect($uri = '', $method = 'location', $http_response_code = 302)
@@ -69,18 +69,9 @@ class loginController implements iCallWs
 		}
 		exit;
 	}
-	
+
 }
 
 $login = new loginController();
 $login->response();
 $login->starsSesion();
-
-echo hash("sha256", 123);
-
-
-
-
-
-
-
