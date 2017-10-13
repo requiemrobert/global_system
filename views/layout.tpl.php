@@ -6,12 +6,12 @@
 	<meta name="description" content="" />
 	<meta name="viewport" content="initial-scale=1">
 	<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
-	
-	<?php 
-		  loadCss($data_head); 
+
+	<?php
+		  loadCss($data_head);
 		  loadScript($data_head);
-	?>	
-		
+	?>
+
 	<title><?= $titulo ?></title>
 </head>
 
@@ -39,21 +39,21 @@
 
 
  	<div class="main">
- 		
+
  <!-- 		<div class="mensaje">
 			<h1><?= $titulo ?></h1>
 		</div> -->
 
-			<div class="flex-content-main">	
+			<div class="flex-content-main">
 
 				<nav class="sidebar">
-							
+
 						<div class="profile-face">
-								<span>D</span>									
+								<span>D</span>
 						</div>
 
 						<div class="profile-name">
-							<span><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a> <?= $_SESSION["user_name"] ?></span>
+							<span><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a> <?= $_SESSION['user_name'] ?></span>
 						</div>
 
 						<ul>
@@ -62,9 +62,9 @@
 							<li><a href="#"><i class="fa fa-pie-chart" aria-hidden="true"></i><label>Estadísticas</label></a></li>
 							<li><a href="#"><i class="fa fa-file-text" aria-hidden="true"></i><label>Reportes</label></a></li>
 						</ul>
-						
+
 				</nav>
-			
+
 		 		<section class="content">
 					<div class="container">
 						<?= $tpl_content; ?>
@@ -73,7 +73,7 @@
 
 			</div>
 	</div>
- 
+
 	<footer>
 
 		<section class="social-media">
@@ -83,7 +83,7 @@
 				<li><a href="#" class=""><i class="fa fa-twitter fa-lg hi-icon" aria-hidden="true"></i></a></li>
 				<li><a href="#" class=""><i class="fa fa-google-plus fa-lg hi-icon" aria-hidden="true"></i></a></li>
 			</ul>
-					
+
 		</section>
 
 		<section class="policy">
@@ -98,7 +98,7 @@
 			<p>© Copyright, Global</p>
 		</section>
 
-	</footer> 
- 
+	</footer>
+
 </body>
 </html>

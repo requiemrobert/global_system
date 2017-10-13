@@ -1,8 +1,8 @@
-<?php 
+<?php
 /**
-  *@author Duilio  
+  *@author Duilio
 **/
- class Request 
+ class Request
  {
 	protected $url;
 	protected $controller;
@@ -85,7 +85,7 @@
 			$controllerFileName  = $this->getControllerFileName();
 			$actionMethodName    = $this->getActionMethodName();
 			$params              = $this->getParams();
-			
+
 			if( ! file_exists($controllerFileName) )
 			{
 				exit('<h1>Controlador no existe</h1>');
@@ -95,22 +95,22 @@
 
 			$controller = new $controllerClassName();
 
-			$response = call_user_func_array([$controller, $actionMethodName], $params);		
-				
+			$response = call_user_func_array([$controller, $actionMethodName], $params);
+
 			$this->executeResponse($response);
  	}
- 
+
  	public function executeResponse($response)
  	{
 			if($response instanceOf Response)
 			{
 				$response->executeView();
 			}
-			elseif (is_string($response)) 
+			elseif (is_string($response))
 			{
 				echo $response;
 			}
-			elseif (is_array($response)) 
+			elseif (is_array($response))
 			{
 				echo json_encode($response);
 			}
@@ -120,7 +120,7 @@
 				echo 'Your view folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
 				//exit('Respuesta no valida');
 			}
-			
+
  	}
 
  }

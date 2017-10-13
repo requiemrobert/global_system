@@ -1,9 +1,10 @@
+<?php
 /**
 * Clase para manejo de sesiones seguras.
 *
 * @version: 1.0
 *
-*   @author: Juan Correa.
+*   @author: dnolasco.
 *
 */
 class Session
@@ -17,13 +18,12 @@ public function __construct()
     $this->initSession();
     $this->setSessionToken();
     $this->setSessionValue('_session_token_', $this->session_token);
+
 }
 
-/*
+/**
 * Configura caché de sesión y la inicializa
-*
 * @params: void
-*
 * @return: void
 */
 private function initSession()
@@ -37,11 +37,9 @@ private function initSession()
     $this->sessionRegenerateId();
 }
 
-/*
+/**
 * Establece el limitador del caché actual
-*
 * @params: String limiter: el limitador
-*
 * @return: void
 */
 private function setSessionCacheLimiter($limiter)
@@ -49,11 +47,9 @@ private function setSessionCacheLimiter($limiter)
     session_cache_limiter($limiter);
 }
 
-/*
+/**
 * Establece la caducidad del caché en minutos
-*
 * @params: Int minutes: duración del caché
-*
 * @return: void
 */
 private function setSessionCacheExpire($minutes)
@@ -61,11 +57,9 @@ private function setSessionCacheExpire($minutes)
     session_cache_expire($minutes);
 }
 
-/*
+/**
 * Establece los parámetros de la cookie. Su efecto dura lo mismo que el script invocador
-*
 * @params: Int minutes: duración del caché
-*
 * @return: void
 */
 private function setCookieParams()
@@ -79,23 +73,19 @@ private function setCookieParams()
             true);
 }
 
-/*
+/**
 * Crea un token personalizado para mayor seguridad
-*
 * @params: void
-*
 * @return: void
 */
 private function setSessionToken()
 {
-    $this->session_token = sha1($this->session_id . 'DeveloperoShield');
+    $this->session_token = sha1($this->session_id . microtime());
 }
 
-/*
+/**
 * Asigna el id de sesión al atributo session_id
-*
 * @params: void
-*
 * @return: void
 */
 public function setSessionId()
@@ -103,11 +93,9 @@ public function setSessionId()
     $this->session_id = session_id();
 }
 
-/*
+/**
 * Recupera el valor de session_id
-*
 * @params: void
-*
 * @return: void
 */
 public function getSessionId()
@@ -115,9 +103,8 @@ public function getSessionId()
     return $this->session_id;
 }
 
-/*
+/**
 * Crea un nuevo valor al array $_SESSION
-*
 * @params:
 *       String name_key: nombre de la llave del array de sesión
 *   String value: el valor asociado a la llave
@@ -129,7 +116,7 @@ public function setSessionValue($name_key, $value)
     $_SESSION[$name_key] = $value;
 }
 
-/*
+/**
 * Recupera un elemento del array $_SESSION
 *
 * @params: String session_value: la llave del array a recuperar
@@ -186,11 +173,9 @@ public function __destruct()
     $this->sessionRegenerateId();
 }
 
-/*
+/**
 * Regenera el session_id
-*
 * @params: void
-*
 * @return: void
 */
 private function sessionRegenerateId()
@@ -199,11 +184,9 @@ private function sessionRegenerateId()
     $this->setSessionId();
 }
 
-/*
+/**
 * Borra los datos y destruye la sesión.
-*
 * @params: void
-*
 * @return: void
 */
 public function destroy()

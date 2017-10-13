@@ -1,4 +1,4 @@
-<?php 
+<?php
 class View extends Response
 {
 	protected $template;
@@ -44,11 +44,11 @@ class View extends Response
 			extract($vars);
 
 			ob_start();
-			
-			require $viewFileName; # content Main view 
-	
-			$tpl_content = ob_get_clean();
 
+			include ('../helpers/session_start.php');
+
+			require $viewFileName; # content Main view
+			$tpl_content = ob_get_clean();
 			require "views/layout.tpl.php";
 
 		});

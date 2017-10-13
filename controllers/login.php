@@ -3,6 +3,7 @@
 require '../helpers/connection_helper.php';
 require '../config/base_url_ws.php';
 require '../interface/interface_controller.php';
+require '../library/session_token.php';
 
 class loginController implements iCallWs
 {
@@ -12,9 +13,8 @@ class loginController implements iCallWs
 	public static $responseJson;
 
 	public function __construct(){
-
-		$strJson = $this->decodeRequest(file_get_contents("php://input"));
-		$this->sendRequest($strJson);
+			$strJson = $this->decodeRequest(file_get_contents("php://input"));
+			$this->sendRequest($strJson);
 	}
 
 	public function decodeRequest($file = ''){
@@ -47,27 +47,22 @@ class loginController implements iCallWs
 		return json_decode(self::$responseJson);
 	}
 
+	public function getUserName(){
+		return $this->decodeResponse()->data[0];
+	}
+
 	public function starsSesion(){
 
 		if($this->decodeResponse()->rc == 200){
-			session_start();
-			$_SESSION["user_name"] = "variable de session " . $this->decodeResponse()->data[0]->user_name;
 
+			$session = new Session();
+
+			foreach ($this->getUserName() as $key => $value) {
+					$session->setSessionValue($key, $value);
+			}
+		}else{
+			$_SESSION["user_name"] = '';
 		}
-
-	}
-
-	public function redirect($uri = '', $method = 'location', $http_response_code = 302)
-	{
-
-		switch($method)
-		{
-			case 'refresh'	: header("Refresh:0;url=".$uri);
-				break;
-			default			: header("Location: ".$uri);
-				break;
-		}
-		exit;
 	}
 
 }
