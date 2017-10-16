@@ -15,7 +15,9 @@
 	require 'library/Inflector.php';
     require 'library/Response.php';
 	require 'library/View.php';
+	require 'library/session_token.php';
 
+	
 	if(empty($_GET['url']))
 	{
 		$url = "";
@@ -23,6 +25,16 @@
 	else
 	{
 		$url = $_GET['url'];
+	}
+
+	if(!empty($_GET['user_name']))//true
+	{
+	
+	   session_start();
+	   $session = new Session();
+	   $session->setSessionValue('user_name', $_GET['user_name']);
+	   $session->setSessionValue('time', microtime());
+	
 	}
 
 	$request = new Request($url);

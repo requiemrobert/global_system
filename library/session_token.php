@@ -2,9 +2,9 @@
 /**
 * Clase para manejo de sesiones seguras.
 *
-* @version: 1.0
+* @version: 1.0.1
 *
-*   @author: dnolasco.
+* @author: dnolasco.
 *
 */
 class Session
@@ -15,7 +15,7 @@ private $session_token;
 
 public function __construct()
 {
-    session_start();
+   
     $this->initSession();
     $this->setSessionToken();
     $this->setSessionValue('_session_token_', $this->session_token);
@@ -32,7 +32,7 @@ private function initSession()
     $this->setSessionCacheLimiter('private');
     $this->setSessionCacheExpire(0);
     $this->setCookieParams();
-    $this->sessionRegenerateId();
+    //$this->sessionRegenerateId();
 }
 
 /**
@@ -106,7 +106,6 @@ public function getSessionId()
 * @params:
 *       String name_key: nombre de la llave del array de sesión
 *   String value: el valor asociado a la llave
-*
 * @return: void
 */
 public function setSessionValue($name_key, $value)
@@ -159,17 +158,15 @@ public function checkSession()
     return false;
 }
 
-/*
+/**
 * Regenera el session_id cuando se deje de hacer referencia al objeto
-*
 * @params: void
-*
 * @return: void
 */
-public function __destruct()
+/*public function __destruct()
 {
-    $this->sessionRegenerateId();
-}
+   // $this->sessionRegenerateId();
+}*/
 
 /**
 * Regenera el session_id

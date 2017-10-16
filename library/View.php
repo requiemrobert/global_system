@@ -46,7 +46,7 @@ class View extends Response
 			ob_start();
 
 			require $viewFileName; # content Main view
-
+			
 			$tpl_content = ob_get_clean();
 			
 			require "views/layout.tpl.php";

@@ -3,7 +3,7 @@
 require '../helpers/connection_helper.php';
 require '../config/base_url_ws.php';
 require '../interface/interface_controller.php';
-require '../library/session_token.php';
+
 
 class loginController implements iCallWs
 {
@@ -21,7 +21,7 @@ class loginController implements iCallWs
 
 	public function decodeRequest($file = ''){
 
-		$decode_data = ['rc'=>'get_login', 'data' =>json_decode($file)];
+		$decode_data = [ 'rc' => 'get_login', 'data' => json_decode($file) ];
 
 		return json_encode($decode_data);
 
@@ -53,22 +53,9 @@ class loginController implements iCallWs
 		return $this->decodeResponse()->data[0];
 	}
 
-	public function starsSesion(){
-
-			if($this->decodeResponse()->rc == 200){
-				$session = new Session();
-				foreach ($this->getUserName() as $key => $value) {
-					$session->setSessionValue($key, $value);
-				}
-			}else{
-				unset($_SESSION);
-			}
-	}
 
 }
 
-
 $login = new loginController();
 $login->response();
-$login->starsSesion();
 

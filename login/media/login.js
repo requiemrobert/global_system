@@ -53,7 +53,7 @@ function timeAjax(dataJson ){
 
    $login = $.ajax({
                       type: "POST",
-                      url: 'http://localhost/global_system/controllers/login.php',
+                      url: 'http://localhost:8888/global_system/controllers/login.php',
                       data: dataJson,
                       contentType: "application/json; charset=utf-8",
                       dataType: "json"
@@ -62,8 +62,9 @@ function timeAjax(dataJson ){
 
         switch(response.rc) {
           case 200:
-              //window.location.href = "http://localhost/global_system/";
-              window.location.replace("http://localhost/global_system/");
+
+              window.location.href = "http://localhost:8888/global_system/?user_name=" + response.data[0].user_name;
+              //window.location.replace("http://localhost/global_system/");
               break;
           case -200:
               mensajeResponse();
@@ -81,7 +82,7 @@ function timeAjax(dataJson ){
     });
 
     $login.always(function(data) {
-       // console.log( "completado"  + data);
+       console.log(data);
     });
 
 }
