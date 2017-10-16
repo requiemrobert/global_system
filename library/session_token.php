@@ -15,6 +15,7 @@ private $session_token;
 
 public function __construct()
 {
+    session_start();
     $this->initSession();
     $this->setSessionToken();
     $this->setSessionValue('_session_token_', $this->session_token);
@@ -31,9 +32,6 @@ private function initSession()
     $this->setSessionCacheLimiter('private');
     $this->setSessionCacheExpire(0);
     $this->setCookieParams();
-
-    session_start();
-
     $this->sessionRegenerateId();
 }
 

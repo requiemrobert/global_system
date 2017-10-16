@@ -17,7 +17,7 @@
 	<script src="media/login.js"></script>
 	<script src="media/bootstrap-notify.min.js"></script>
 	<script src="media/notify.js"></script>
-	
+
 	<title>Login | Global System</title>
 </head>
 <body>
@@ -39,7 +39,7 @@
 	<form class="form" method="POST">
 		<input type="text" name="user_name" id="user_name" required placeholder="Username" pattern="[\w]+" onkeypress="return blokSpace(event,this)">
 		<input type="password" name="password" id="password" placeholder="Password" onkeypress="return blokSpace(event,this)">
-		
+
 		<button type="submit" id="login_bt" class="ripple-button">
 			<div class="ripple-container">
 	          <span class="ripple-effect"></span>
@@ -48,7 +48,7 @@
         </button>
 	</form>
 </div>
-	
+
 	<ul class="bg-bubbles">
 		<li></li>
 		<li></li>
@@ -82,4 +82,3 @@
 <script src="media/	ripple.js"></script>
 </body>
 </html>
-	

@@ -13,8 +13,10 @@ class loginController implements iCallWs
 	public static $responseJson;
 
 	public function __construct(){
-			$strJson = $this->decodeRequest(file_get_contents("php://input"));
-			$this->sendRequest($strJson);
+
+		$strJson = $this->decodeRequest(file_get_contents("php://input"));
+		$this->sendRequest($strJson);
+
 	}
 
 	public function decodeRequest($file = ''){
@@ -53,20 +55,20 @@ class loginController implements iCallWs
 
 	public function starsSesion(){
 
-		if($this->decodeResponse()->rc == 200){
-
-			$session = new Session();
-
-			foreach ($this->getUserName() as $key => $value) {
+			if($this->decodeResponse()->rc == 200){
+				$session = new Session();
+				foreach ($this->getUserName() as $key => $value) {
 					$session->setSessionValue($key, $value);
+				}
+			}else{
+				unset($_SESSION);
 			}
-		}else{
-			$_SESSION["user_name"] = '';
-		}
 	}
 
 }
 
+
 $login = new loginController();
 $login->response();
 $login->starsSesion();
+

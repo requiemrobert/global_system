@@ -1,3 +1,17 @@
+<?php 	  
+	
+	session_start();
+
+	print_r($_SESSION);
+
+/*	if(!isset($_SESSION))
+    {
+        echo "No Hay session!!!";
+    }else{
+    	echo "si hay session";
+    }*/
+
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -27,10 +41,10 @@
 				<nav>
 				  <ul class="navcontainer">
 					<li><a href="<?= BASE_URL ?>"><i class="fa fa-home fa-lg" aria-hidden="true"></i> <label>Inicio</label></a></li>
-					<li><a href="<?= BASE_URL ?>/shop"><i class="fa fa-cart-plus fa-lg" aria-hidden="true"></i> <label>Shop</label></a></li>
-					<li><a href="<?= BASE_URL ?>/contactos"><i class="fa fa-users fa-lg" aria-hidden="true"></i> <label>Usuarios</label></a></li>
-					<li><a href="<?= BASE_URL ?>/register"><i class="fa fa-users fa-lg" aria-hidden="true"></i> <label>Registro</label></a></li>
-				    <li><a href="<?= BASE_URL ?>/"><i class="fa fa-id-card-o fa-lg" aria-hidden="true"></i> <label>About</label></a></li>
+					<li><a href="<?= BASE_URL ?>shop"><i class="fa fa-cart-plus fa-lg" aria-hidden="true"></i> <label>Shop</label></a></li>
+					<li><a href="<?= BASE_URL ?>contactos"><i class="fa fa-users fa-lg" aria-hidden="true"></i> <label>Usuarios</label></a></li>
+					<li><a href="<?= BASE_URL ?>register"><i class="fa fa-users fa-lg" aria-hidden="true"></i> <label>Registro</label></a></li>
+				    <li><a href="<?= BASE_URL ?>"><i class="fa fa-id-card-o fa-lg" aria-hidden="true"></i> <label>About</label></a></li>
 				  </ul>
 				</nav>
 			</div>
@@ -53,7 +67,7 @@
 						</div>
 
 						<div class="profile-name">
-							<span><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a> <?= $_SESSION['user_name'] ?></span>
+							<span><a href="<?= BASE_URL ?>logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a> <?= $_SESSION['user_name'] ?></span>
 						</div>
 
 						<ul>
