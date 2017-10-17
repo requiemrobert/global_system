@@ -24,6 +24,4 @@ function getWS($dataPost, $urlcurlWS)
 		return $response;
 	}
 
-	
-	
 }

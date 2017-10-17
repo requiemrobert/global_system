@@ -64,7 +64,7 @@ function timeAjax(dataJson ){
         switch(response.rc) {
           case 200:
 
-              window.location.href = baseURL + "/?user_name=" + response.data[0].user_name;
+              window.location.href = baseURL + "/?user_name=" + response.data[0].user_name + "&status=" +response.data[0].status ;
         
               break;
           case -200:

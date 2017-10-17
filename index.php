@@ -29,13 +29,19 @@
 
 	if(!empty($_GET['user_name']))//true
 	{
-	
+	  
 	   session_start();
 	   
 	   $session = new Session();
 
 	   $session->setSessionValue('user_name', $_GET['user_name']);
+	   $session->setSessionValue('status', $_GET['status']);
 	   $session->setSessionValue('time', microtime());
+
+	   $session->setArrayData(['user_name' => $_SESSION['user_name'], 'status' => $_SESSION['status']]);
+	   
+	   $session->sendRequest();
+	   $session->response();
 		
 	}
 

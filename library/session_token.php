@@ -7,11 +7,17 @@
 * @author: dnolasco.
 *
 */
-class Session
+
+include 'helpers/connection_helper.php';
+require 'config/base_url_ws.php';
+require 'interface/interface_controller.php';
+
+class Session implements iCallWs
 {
 
 public $session_id;
 private $session_token;
+private $arrayData;
 
 public function __construct()
 {
@@ -19,6 +25,35 @@ public function __construct()
     $this->initSession();
     $this->setSessionToken();
     $this->setSessionValue('_session_token_', $this->session_token);
+
+}
+
+
+public function setArrayData($array = [])
+{
+   $this->arrayData = $array ;
+}
+
+public function getArrayData()
+{
+   return $this->arrayData;
+}
+
+public function decodeRequest()
+{
+    $decode_data = [ 'rc' => 'get_menu', 'data' => $this->getArrayData() ];
+
+    return json_encode($decode_data);
+}
+
+public function sendRequest()
+{   
+    return getWS( $this->decodeRequest() , BASE_URL_WS );
+}
+
+public function response(){
+
+    echo $this->sendRequest();
 
 }
 
@@ -32,7 +67,7 @@ private function initSession()
     $this->setSessionCacheLimiter('private');
     $this->setSessionCacheExpire(0);
     $this->setCookieParams();
-    //$this->sessionRegenerateId();
+    $this->sessionRegenerateId();
 }
 
 /**

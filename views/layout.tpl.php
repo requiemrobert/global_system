@@ -2,8 +2,6 @@
 	
 	if (!isset($_SESSION)) session_start();//variable no definida 
 
-	echo substr($_SESSION['user_name'], -1); 
-
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +55,7 @@
 				<nav class="sidebar">
 
 						<div class="profile-face">
-								<span>D</span>
+								<span><?= ucfirst (substr($_SESSION['user_name'], 0 , 1))?></span>
 						</div>
 
 						<div class="profile-name">
