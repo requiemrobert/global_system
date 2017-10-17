@@ -2,7 +2,8 @@
 	
 	if (!isset($_SESSION)) session_start();//variable no definida 
 
-	print_r($_SESSION);
+	echo substr($_SESSION['user_name'], -1); 
+
 ?>
 
 <!DOCTYPE html>

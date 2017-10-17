@@ -1,5 +1,4 @@
 
-
 $(function(){
 
   	$('#login_bt').on('click',function(event){
@@ -15,18 +14,17 @@ function login(form){
 
 	var count_empty = 0;
 
-
     form.find('input').each(function(){
-	    var input = $(this);
-	    if (!validateField(input)){
-	      	count_empty++;
-	    }
+  	    var input = $(this);
+  	    if (!validateField(input)){
+  	      	count_empty++;
+  	    }
     });
 
    	if (count_empty <= 0) {
 
    		$('.container h1').addClass('form-success')
-                        .fadeOut(300, function(){
+                        .fadeOut(300, function(){ 
                                                  $(this).text("Cargando").show()
                                                 });
 
@@ -51,9 +49,12 @@ function callWebService(){
 
 function timeAjax(dataJson ){
 
+   var path = window.location.href.split( '/' );
+   var baseURL = path[0]+ "//" +path[2]+'/'+path[3];
+
    $login = $.ajax({
                       type: "POST",
-                      url: 'http://localhost:8888/global_system/controllers/login.php',
+                      url: baseURL + '/controllers/login.php',
                       data: dataJson,
                       contentType: "application/json; charset=utf-8",
                       dataType: "json"
@@ -63,8 +64,8 @@ function timeAjax(dataJson ){
         switch(response.rc) {
           case 200:
 
-              window.location.href = "http://localhost:8888/global_system/?user_name=" + response.data[0].user_name;
-              //window.location.replace("http://localhost/global_system/");
+              window.location.href = baseURL + "/?user_name=" + response.data[0].user_name;
+        
               break;
           case -200:
               mensajeResponse();

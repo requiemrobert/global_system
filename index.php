@@ -31,10 +31,12 @@
 	{
 	
 	   session_start();
+	   
 	   $session = new Session();
+
 	   $session->setSessionValue('user_name', $_GET['user_name']);
 	   $session->setSessionValue('time', microtime());
-	
+		
 	}
 
 	$request = new Request($url);
