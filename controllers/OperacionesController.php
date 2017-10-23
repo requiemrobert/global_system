@@ -1,6 +1,6 @@
 <?php
 	
-class ContactosController
+class OperacionesController
 {
 	public function indexAction()
 	{	
@@ -21,7 +21,7 @@ class ContactosController
 				'data_javascript' => $data_javascript
 		);
 
-		return new View('contactos',['titulo' => 'Contactos', 'data_head' => $data_head]);
+		return new View('operaciones',['titulo' => 'Contactos', 'data_head' => $data_head]);
 	}
 	
 	public function ciudadAction($ciudad)

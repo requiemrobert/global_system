@@ -1,6 +1,6 @@
 <?php 
 
-class RegisterController
+class ProductosController
 {
 	public function indexAction()
 	{	
@@ -20,6 +20,6 @@ class RegisterController
 				'data_javascript' => $data_javascript
 		);
 
-		return $view = new View('register', ['titulo' => 'Registro', 'data_head' => $data_head]);
+		return $view = new View('productos', ['titulo' => 'Registro', 'data_head' => $data_head]);
 	}
 }
