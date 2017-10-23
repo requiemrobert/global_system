@@ -66,7 +66,7 @@ function timeAjax(dataJson ){
         switch(response.rc) {
           case 200:
 
-             // window.location.href = baseURL;
+              window.location.href = baseURL;
         
               break;
           case -200:
@@ -81,11 +81,14 @@ function timeAjax(dataJson ){
     });
 
     $login.fail(function() {
-      //alert( "No se pudo obtener la consulta en este momento" );
+      mensajeResponse();
+      var title_alerts = "Notificación";
+      var mensaje = "No se puede atender su solicitud momento, Consulte con el Departamento de Sistema";
+      alertaResponse( title_alerts, icon_danger, alerClassDanger, mensaje, directionShowCenter,3000 );
     });
 
     $login.always(function(data) {
-       //console.log(data);
+       console.log(data);
     });
 
 }

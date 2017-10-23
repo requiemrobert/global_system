@@ -52,10 +52,13 @@ class loginController
 		
 		session_start();
 
-		foreach ($this->decodeResponse()->data[0] as $key => $value) {
+		if ($this->decodeResponse()->rc == 200) {
 			
-			$_SESSION[$key] = $value;
+			foreach ($this->decodeResponse()->data[0] as $key => $value) {
 			
+				$_SESSION[$key] = $value;
+				
+			}
 		}
 
 	}
@@ -68,7 +71,7 @@ class loginController
 	  $responseJson = json_decode( getWS( json_encode($decode_data) , BASE_URL_WS ) );			  
 	 	
 		 if ($responseJson->rc == 200) {
-		 	 return $responseJson->data;
+		 	return $responseJson->data;
 		 }else {
 		 	return false;
 		 }	 
@@ -76,14 +79,16 @@ class loginController
 	}
 
 	public function getMenu(){
+		
 		$dataOpciones = [];
+
 		foreach ($this->getResponseMenu() as $key => $value) {
 				
-			//$dataOpciones[$key] = $value;
+		 array_push($dataOpciones, [$key => $value]);
 		
 		}
 
-		///$_SESSION['opciones_menu'] = $arrayOpciones;
+		$_SESSION['opciones_menu'] = $dataOpciones;
 	
 	}
 
@@ -91,10 +96,10 @@ class loginController
 }
 
 $login = new loginController();
-//$login->getLogin();
-//$login->setSession();
-//$login->getMenu();
+$login->getLogin();
+$login->setSession();
+$login->getMenu();
 
 /*session_unset();
 session_destroy();*/
-print_r($_SESSION);
+

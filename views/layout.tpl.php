@@ -5,6 +5,8 @@
 		session_start();
 	}
 
+	//print_r(json_encode( $_SESSION['opciones_menu']) );
+
 ?>
 
 <!DOCTYPE html>
@@ -34,14 +36,18 @@
 			<div class="content-menu">
 				<nav>
 				  <ul class="navcontainer">
-					<li><a href="<?= BASE_URL ?>"><i class="fa fa-home fa-lg" aria-hidden="true"></i> <label>Inicio</label></a></li>
+				  		<li><a href="<?= BASE_URL ?>"><i class="fa fa-home fa-lg" aria-hidden="true"></i> <label>Inicio</label></a></li>
+				  		<?php render_menu(); ?>
+
+					<!-- 	
 					<li><a href="<?= BASE_URL ?>shop"><i class="fa fa-cart-plus fa-lg" aria-hidden="true"></i> <label>Operaciones</label></a></li>
 					<li><a href="<?= BASE_URL ?>contactos"><i class="fa fa-users fa-lg" aria-hidden="true"></i> <label>Clientes</label></a></li>
 					<li><a href="<?= BASE_URL ?>register"><i class="fa fa-users fa-lg" aria-hidden="true"></i> <label>Proveedores</label></a></li>
 				    <li><a href="<?= BASE_URL ?>"><i class="fa fa-id-card-o fa-lg" aria-hidden="true"></i> <label>Productos</label></a></li>
 				    <li><a href="<?= BASE_URL ?>"><i class="fa fa-id-card-o fa-lg" aria-hidden="true"></i> <label>Usuarios</label></a></li>
+				  	-->
 				  </ul>
-				</nav>
+				</nav> 
 			</div>
 		</div>
 	</header>
