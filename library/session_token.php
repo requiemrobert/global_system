@@ -16,16 +16,13 @@ class Session implements iCallWs
 {
 
 public $session_id;
-private $session_token;
 private $arrayData;
 
-public function __construct()
+public function __construct($arrayUser=[])
 {
    
     $this->initSession();
-    $this->setSessionToken();
-    $this->setSessionValue('_session_token_', $this->session_token);
-
+    $this->setSessionValue('session_user', $arrayUser);
 }
 
 
@@ -53,9 +50,25 @@ public function sendRequest()
 
 public function response(){
 
-    echo $this->sendRequest();
+   $stdClass = json_decode($this->sendRequest());
 
+   $arrayData = [];
+
+   $contador = 0;
+
+   if ($stdClass->rc == 200) {
+       
+        foreach ($stdClass->data as $key => $value) {
+      
+            $arrayData[$contador] = [ $key => $value ];
+            $contador++;
+
+        } 
+   }
+   
+    return array_values($arrayData);
 }
+
 
 /**
 * Configura caché de sesión y la inicializa
@@ -107,36 +120,6 @@ private function setCookieParams()
 }
 
 /**
-* Crea un token personalizado para mayor seguridad
-* @params: void
-* @return: void
-*/
-private function setSessionToken()
-{
-    $this->session_token = sha1($this->session_id . microtime());
-}
-
-/**
-* Asigna el id de sesión al atributo session_id
-* @params: void
-* @return: void
-*/
-public function setSessionId()
-{
-    $this->session_id = session_id();
-}
-
-/**
-* Recupera el valor de session_id
-* @params: void
-* @return: void
-*/
-public function getSessionId()
-{
-    return $this->session_id;
-}
-
-/**
 * Crea un nuevo valor al array $_SESSION
 * @params:
 *       String name_key: nombre de la llave del array de sesión
@@ -163,45 +146,15 @@ public function getSessionValue($session_value)
     return false;
 }
 
-/*
-* Elimina un elemento del array $_SESSION
-*
-* @params: String session_value: la llave del array a eliminar
-*
-* @return: void
-*/
-public function removeSessionValue($session_value)
-{
-    if (! empty( $_SESSION[$session_value]))
-        unset ($_SESSION[$session_value]);
-}
-
-/*
-* Valida sesión iniciada usando session_token y session_id
-*
-*   Al autogenerarse al instanciar, siempre deben ser iguales
-*
-* @params: void
-*
-* @return: true en caso de éxito, false lo contrario
-*/
-public function checkSession()
-{
-    if ($this->session_token === $_SESSION['_session_token_'] and $this->session_id === session_id() )
-        return true;
-
-    return false;
-}
-
 /**
 * Regenera el session_id cuando se deje de hacer referencia al objeto
 * @params: void
 * @return: void
 */
-/*public function __destruct()
+public function __destruct()
 {
-   // $this->sessionRegenerateId();
-}*/
+    $this->sessionRegenerateId();
+}
 
 /**
 * Regenera el session_id
@@ -211,19 +164,7 @@ public function checkSession()
 private function sessionRegenerateId()
 {
     session_regenerate_id();
-    $this->setSessionId();
 }
 
-/**
-* Borra los datos y destruye la sesión.
-* @params: void
-* @return: void
-*/
-public function destroy()
-{
-    $this->session_id = '';
-    session_unset();
-    session_destroy();
-}
 
 }

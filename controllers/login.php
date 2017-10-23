@@ -4,8 +4,7 @@ require '../helpers/connection_helper.php';
 require '../config/base_url_ws.php';
 require '../interface/interface_controller.php';
 
-
-class loginController implements iCallWs
+class loginController 
 {
 
 	private $get_request;
@@ -16,7 +15,7 @@ class loginController implements iCallWs
 
 		$strJson = $this->decodeRequest(file_get_contents("php://input"));
 		$this->sendRequest($strJson);
-
+	
 	}
 
 	public function decodeRequest($file = ''){
@@ -36,7 +35,7 @@ class loginController implements iCallWs
 		print JSON WS
 	*/
 
-	public function response(){
+	public function getLogin(){
 
 		echo self::$responseJson;
 	}
@@ -49,13 +48,53 @@ class loginController implements iCallWs
 		return json_decode(self::$responseJson);
 	}
 
-	public function getUserName(){
-		return $this->decodeResponse()->data[0];
+	public function setSession(){
+		
+		session_start();
+
+		foreach ($this->decodeResponse()->data[0] as $key => $value) {
+			
+			$_SESSION[$key] = $value;
+			
+		}
+
+	}
+
+	public function getResponseMenu(){
+	   
+	  $session_user = ["user_name" => $_SESSION['user_name'],"status" => $_SESSION['status']];
+	  				 
+	  $decode_data = [ 'rc' => 'get_menu', 'data' => $session_user];
+	  $responseJson = json_decode( getWS( json_encode($decode_data) , BASE_URL_WS ) );			  
+	 	
+		 if ($responseJson->rc == 200) {
+		 	 return $responseJson->data;
+		 }else {
+		 	return false;
+		 }	 
+
+	}
+
+	public function getMenu(){
+		$dataOpciones = [];
+		foreach ($this->getResponseMenu() as $key => $value) {
+				
+			//$dataOpciones[$key] = $value;
+		
+		}
+
+		///$_SESSION['opciones_menu'] = $arrayOpciones;
+	
 	}
 
 
 }
 
 $login = new loginController();
-$login->response();
+//$login->getLogin();
+//$login->setSession();
+//$login->getMenu();
 
+/*session_unset();
+session_destroy();*/
+print_r($_SESSION);

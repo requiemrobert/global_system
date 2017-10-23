@@ -19,6 +19,7 @@
  		$this->resolveController($segments);
  		$this->resolveAction($segments);
  		$this->resolveParams($segments);
+
  	}
 
  	public function resolveController(&$segments)

@@ -10,7 +10,7 @@ class logoutController
 
 			session_unset();
 			session_destroy();
-			header("Location: " . "http://localhost:8888/global_system/login/");
+			header("Location: " . BASE_URL ."/login/");
 
 		} catch (Exception $e) {
 			echo 'Excepción capturada: ',  $e->getMessage(), "\n";

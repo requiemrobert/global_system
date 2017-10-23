@@ -61,10 +61,12 @@ function timeAjax(dataJson ){
 
    }); $login.done(function(response) {
 
+        console.log(response);
+
         switch(response.rc) {
           case 200:
 
-              window.location.href = baseURL + "/?user_name=" + response.data[0].user_name + "&status=" +response.data[0].status ;
+             // window.location.href = baseURL;
         
               break;
           case -200:
@@ -83,7 +85,7 @@ function timeAjax(dataJson ){
     });
 
     $login.always(function(data) {
-       console.log(data);
+       //console.log(data);
     });
 
 }
