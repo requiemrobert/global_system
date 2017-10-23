@@ -12,7 +12,7 @@ function render_menu(){
 			//echo array_keys($value)[0];
 
 
-	$render .= "<li><a href='<?= BASE_URL ?>'><i class='fa fa-home fa-lg' aria-hidden='true'></i> <label>". array_keys($value)[0] ."</label></a></li>";
+	$render .= "<li><a href='<?= BASE_URL ?>'><i class='fa ". menu_url(array_keys($value)[0]) ." fa-lg' aria-hidden='true'></i> <label>". array_keys($value)[0] ."</label></a></li>";
 	
 	}	
 
@@ -28,6 +28,31 @@ function render_menu(){
 	'
 */
 
+}
+
+function menu_url($menu=''){
+
+	switch ($menu) {
+		case 'operaciones':
+			 return 'fa-wrench';
+			break;
+		case 'productos':
+			 return 'fa-cart-plus';
+			break;	
+		
+		case 'clientes':
+			 return 'fa-users';
+			break;	
+		case 'proveedores':
+			 return 'fa-truck';
+			break;
+		case 'usuarios':
+			 return 'fa-user-circle-o';
+			break;			
+		default:
+			# code...
+			break;
+	}
 
 }
 
