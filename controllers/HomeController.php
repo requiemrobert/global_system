@@ -1,4 +1,5 @@
 <?php 
+require 'helpers/resolve_opcion.php';
 
 class HomeController
 {
@@ -20,6 +21,12 @@ class HomeController
 				'data_javascript' => $data_javascript
 		);
 
-		return $view = new View('home', ['titulo' => 'Clase 2', 'data_head' => $data_head]);
+		$sub_menu = resolve_sub_opcion(get_class($this),$_SESSION['opciones_menu']);
+
+		return $view = new View('home', [
+										  'titulo' => 'Home', 
+										  'data_head' => $data_head, 
+										  'opciones_sub_menu' => $sub_menu
+									   ]);
 	}
 }

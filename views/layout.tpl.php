@@ -5,12 +5,6 @@
 		session_start();
 	}
 
-<<<<<<< HEAD
-	print_r(json_encode( $_SESSION['opciones_menu']) );
-=======
-	print_r( $_SESSION['opciones_menu'][0]['operaciones'] );
->>>>>>> f81600e01e03f000e1882ab1d5aeed1b794efa64
-
 ?>
 
 <!DOCTYPE html>
@@ -39,11 +33,9 @@
 			</div>
 			<div class="content-menu">
 				<nav>
-				  <ul class="navcontainer">
+				  
+			  		<?= render_menu(); ?>
 
-			  		<?php render_menu(); ?>
-
-				  </ul>
 				</nav> 
 			</div>
 		</div>
@@ -57,19 +49,14 @@
 	<nav class="sidebar">
 
 		<div class="profile-face">
-				<span><?= ucfirst (substr($_SESSION['user_name'], 0 , 1))?></span>
+				<span><?= render_profile() ?></span>
 		</div>
 
 		<div class="profile-name">
 			<span><a href="<?= BASE_URL ?>logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a> <?= $_SESSION['user_name'] ?></span>
 		</div>
 
-		<ul class="sidebar-menu">
-			<li><a href="#"><i class="fa fa-usd" aria-hidden="true"></i><label>Nómina</label></a></li>
-			<li><a href="#"><i class="fa fa-handshake-o" aria-hidden="true"></i><label>Proveedores</label></a></li>
-			<li><a href="#"><i class="fa fa-pie-chart" aria-hidden="true"></i><label>Estadísticas</label></a></li>
-			<li><a href="#"><i class="fa fa-file-text" aria-hidden="true"></i><label>Reportes</label></a></li>
-		</ul>
+		<?= render_sub_menu($opciones_sub_menu) ?>
 
 	</nav>
 

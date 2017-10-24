@@ -1,6 +1,19 @@
+
 <section class="main">
 		
-				<form>
+<?php	
+
+		foreach ($_SESSION['opciones_menu'] as $key => $value) {
+			
+			print_r($key);
+			echo "<br>";
+			print_r($value);
+			echo "<br>";
+		}
+
+?>
+
+			<!-- 	<form>
 					<fieldset>
 					<legend><?= print_r($sub_menu) ?></legend>
 						<label for="f_name">Nombre</label>
@@ -13,7 +26,7 @@
 						<input type="text" name="ci" id="ci">
 					</fieldset>
 					<input type="button" id="enviar" value="Registrar">
-				</form>
+				</form> -->
 
 	
 </section>

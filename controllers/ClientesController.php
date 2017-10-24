@@ -1,6 +1,7 @@
 <?php 
+require 'helpers/resolve_opcion.php';
 
-class ClientesController
+class ClientesController 
 {
 	public function indexAction()
 	{	
@@ -19,15 +20,14 @@ class ClientesController
 				'data_style' => $data_style,
 				'data_javascript' => $data_javascript
 		);
-	
-		$posicionController = strpos(get_class($this), "Controller");
 
-		$className = substr(get_class($this), 0, $posicionController); 
+		$sub_menu = resolve_sub_opcion(get_class($this),$_SESSION['opciones_menu']);
 
 		return new View('clientes', [
-									  'titulo' => 'Registro', 
+									  'titulo' => 'Clientes', 
 									  'data_head' => $data_head, 
-									  'sub_menu' => array_values($_SESSION['opciones_menu'])[0]
+									  'opciones_sub_menu' => $sub_menu
 									]);
 	}
+
 }

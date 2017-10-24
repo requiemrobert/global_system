@@ -8,7 +8,7 @@
 	require "config/config.php";
 	require "config/base_url.php";
 	require 'helpers/load_css_script.php';
-	require 'helpers/render_menu.php';
+	require 'helpers/render_tool.php';
 
 	//Library
 	require 'library/Request.php';
