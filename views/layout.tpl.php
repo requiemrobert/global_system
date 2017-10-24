@@ -5,7 +5,11 @@
 		session_start();
 	}
 
+<<<<<<< HEAD
 	print_r(json_encode( $_SESSION['opciones_menu']) );
+=======
+	print_r( $_SESSION['opciones_menu'][0]['operaciones'] );
+>>>>>>> f81600e01e03f000e1882ab1d5aeed1b794efa64
 
 ?>
 
@@ -36,16 +40,9 @@
 			<div class="content-menu">
 				<nav>
 				  <ul class="navcontainer">
-				  		<li><a href="<?= BASE_URL ?>"><i class="fa fa-home fa-lg" aria-hidden="true"></i> <label>Inicio</label></a></li>
-				  		<?php render_menu(); ?>
 
-					<!-- 	
-					<li><a href="<?= BASE_URL ?>shop"><i class="fa fa-cart-plus fa-lg" aria-hidden="true"></i> <label>Operaciones</label></a></li>
-					<li><a href="<?= BASE_URL ?>contactos"><i class="fa fa-users fa-lg" aria-hidden="true"></i> <label>Clientes</label></a></li>
-					<li><a href="<?= BASE_URL ?>register"><i class="fa fa-users fa-lg" aria-hidden="true"></i> <label>Proveedores</label></a></li>
-				    <li><a href="<?= BASE_URL ?>"><i class="fa fa-id-card-o fa-lg" aria-hidden="true"></i> <label>Productos</label></a></li>
-				    <li><a href="<?= BASE_URL ?>"><i class="fa fa-id-card-o fa-lg" aria-hidden="true"></i> <label>Usuarios</label></a></li>
-				  	-->
+			  		<?php render_menu(); ?>
+
 				  </ul>
 				</nav> 
 			</div>
@@ -67,7 +64,7 @@
 			<span><a href="<?= BASE_URL ?>logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a> <?= $_SESSION['user_name'] ?></span>
 		</div>
 
-		<ul>
+		<ul class="sidebar-menu">
 			<li><a href="#"><i class="fa fa-usd" aria-hidden="true"></i><label>Nómina</label></a></li>
 			<li><a href="#"><i class="fa fa-handshake-o" aria-hidden="true"></i><label>Proveedores</label></a></li>
 			<li><a href="#"><i class="fa fa-pie-chart" aria-hidden="true"></i><label>Estadísticas</label></a></li>
