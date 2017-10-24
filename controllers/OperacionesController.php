@@ -4,7 +4,7 @@ class OperacionesController
 {
 	public function indexAction()
 	{	
-
+		
 		if(isset($data_style))
 		{
 	       unset($data_style);
