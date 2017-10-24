@@ -1,9 +1,10 @@
 <?php 
 
-class ShopController
+class ClientesController
 {
 	public function indexAction()
 	{	
+
 		if(isset($data_style))
 		{
 	       unset($data_style);
@@ -18,7 +19,15 @@ class ShopController
 				'data_style' => $data_style,
 				'data_javascript' => $data_javascript
 		);
+	
+		$posicionController = strpos(get_class($this), "Controller");
 
-		return $view = new View('shop', ['titulo' => 'Registro', 'data_head' => $data_head]);
+		$className = substr(get_class($this), 0, $posicionController); 
+
+		return new View('clientes', [
+									  'titulo' => 'Registro', 
+									  'data_head' => $data_head, 
+									  'sub_menu' => array_values($_SESSION['opciones_menu'])[0]
+									]);
 	}
 }
