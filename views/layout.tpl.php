@@ -5,7 +5,7 @@
 		session_start();
 	}
 
-	//print_r(json_encode( $_SESSION['opciones_menu']) );
+	print_r(json_encode( $_SESSION['opciones_menu']) );
 
 ?>
 
