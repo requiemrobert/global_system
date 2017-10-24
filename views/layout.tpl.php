@@ -5,7 +5,7 @@
 		session_start();
 	}
 
-	//print_r( $_SESSION['opciones_menu'][0]['operaciones'] );
+	print_r( $_SESSION['opciones_menu'][0]['operaciones'] );
 
 ?>
 
@@ -60,7 +60,12 @@
 			<span><a href="<?= BASE_URL ?>logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a> <?= $_SESSION['user_name'] ?></span>
 		</div>
 
-		
+		<ul class="sidebar-menu">
+			<li><a href="#"><i class="fa fa-usd" aria-hidden="true"></i><label>Nómina</label></a></li>
+			<li><a href="#"><i class="fa fa-handshake-o" aria-hidden="true"></i><label>Proveedores</label></a></li>
+			<li><a href="#"><i class="fa fa-pie-chart" aria-hidden="true"></i><label>Estadísticas</label></a></li>
+			<li><a href="#"><i class="fa fa-file-text" aria-hidden="true"></i><label>Reportes</label></a></li>
+		</ul>
 
 	</nav>
 
