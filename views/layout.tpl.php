@@ -44,29 +44,31 @@
 
 <div class="main">
 
-<div class="flex-content-main">
+	<div class="flex-content-main">
 
-	<nav class="sidebar">
+		<nav class="sidebar">
 
-		<div class="profile-face">
-				<span><?= render_profile() ?></span>
-		</div>
+			<div class="profile-face">
+					<span><?= render_profile() ?></span>
+			</div>
 
-		<div class="profile-name">
-			<span><a href="<?= BASE_URL ?>logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a> <?= $_SESSION['user_name'] ?></span>
-		</div>
+			<div class="profile-name">
+				<span>
+					<a href="<?= BASE_URL ?>logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a> <?= $_SESSION['user_name'] ?>
+				</span>
+			</div>
 
-		<?= render_sub_menu($opciones_sub_menu) ?>
+			<?= render_sub_menu($opciones_sub_menu) ?>
 
-	</nav>
+		</nav>
 
 		<section class="content">
-		<div class="container">
-			<?= $tpl_content; ?>
-		</div>
-	</section>
+			<div class="container">
+				<?= $tpl_content; ?>
+			</div>
+		</section>
 
-</div>
+	</div>
 </div>
 
 	<footer>
