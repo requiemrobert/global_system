@@ -23,10 +23,10 @@ class HomeController
 
 		$sub_menu = resolve_sub_opcion(get_class($this),$_SESSION['opciones_menu']);
 
-		return $view = new View('home', [
-										  'titulo' => 'Home', 
-										  'data_head' => $data_head, 
-										  'opciones_sub_menu' => $sub_menu
-									   ]);
+		return new View('home', [
+								  'titulo' => 'Home', 
+								  'data_head' => $data_head, 
+								  'opciones_sub_menu' => $sub_menu
+							    ]);
 	}
 }

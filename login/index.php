@@ -8,15 +8,15 @@
 	<meta name="HandheldFriendly" content="True">
 	<meta http-equiv="cleartype" content="on">
 	<meta name="theme-color" content="#009ee3">
-	<link rel="stylesheet" type="text/css" href="media/login.css">
-	<link rel="stylesheet" type="text/css" href="media/wave.css">
-	<link rel="stylesheet" type="text/css" href="media/ripple.css">
-	<link rel="stylesheet" type="text/css" href="media/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="media/css/login.css">
+	<link rel="stylesheet" type="text/css" href="media/css/wave.css">
+	<link rel="stylesheet" type="text/css" href="media/css/ripple.css">
+	<link rel="stylesheet" type="text/css" href="media/css/font-awesome.css">
 
-	<script src="media/jquery-3.2.1.min.js"></script>
-	<script src="media/login.js"></script>
-	<script src="media/bootstrap-notify.min.js"></script>
-	<script src="media/notify.js"></script>
+	<script src="media/js/jquery-3.2.1.min.js"></script>
+	<script src="media/js/login.js"></script>
+	<script src="media/js/bootstrap-notify.min.js"></script>
+	<script src="media/js/notify.js"></script>
 
 	<title>Login | Global System</title>
 </head>

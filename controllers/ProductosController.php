@@ -1,4 +1,5 @@
 <?php 
+require 'helpers/resolve_opcion.php';
 
 class ProductosController
 {
@@ -20,6 +21,12 @@ class ProductosController
 				'data_javascript' => $data_javascript
 		);
 
-		return $view = new View('productos', ['titulo' => 'Registro', 'data_head' => $data_head]);
-	}
+		$sub_menu = resolve_sub_opcion(get_class($this),$_SESSION['opciones_menu']);
+
+		return new View('productos', [
+									  'titulo' => 'Home', 
+									  'data_head' => $data_head, 
+									  'opciones_sub_menu' => $sub_menu
+								    ]);
+		}
 }

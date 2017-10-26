@@ -16,9 +16,9 @@ function render_menu(){
 
 	foreach ($_SESSION['opciones_menu'] as $key => $value) {
 
-		$render .= "<li><a href='". array_keys($value)[0] ."'>";
-		$render .= "<i class='fa ". menu_ico(array_keys($value)[0]) ." fa-lg' aria-hidden='true'></i>";
-		$render .= "<label>". array_keys($value)[0] ."</label></a></li>";
+		$render .= "<li><a href='". $key ."'>";
+		$render .= "<i class='fa ". menu_ico($key) ." fa-lg' aria-hidden='true'></i>";
+		$render .= "<label>". $key ."</label></a></li>";
 
 	}
 
@@ -31,8 +31,8 @@ function render_menu(){
 function render_sub_menu($data_opciones = []){
 	
 	$render =   '<ul class="sidebar-menu">';	
-	
-	foreach ($data_opciones as $key => $sub_menu) {
+		
+	foreach ($data_opciones as $sub_menu ) {
 		
 		$render .=	"<li> <a href='#'>";
 		$render .=  "<i class='fa ". menu_ico($sub_menu)." fa-me' aria-hidden='true'></i>";
@@ -76,9 +76,35 @@ function menu_ico($menu=''){
 			break;	
 
 		default:
-			return 'fa-window-maximize';
+			return 'fa-file-o';
 			break;
 	}
+
+}
+
+function render_footer(){
+
+	$footer  = '<footer>';
+	$footer .= '<section class="social-media">';
+	$footer .= '<ul>';
+	$footer .= '	<li><a href="#" class=""><i class="fa fa-facebook fa-lg hi-icon" aria-hidden="true"></i></a></li>';
+	$footer .= '	<li><a href="#" class=""><i class="fa fa-twitter fa-lg hi-icon" aria-hidden="true"></i></a></li>';
+	$footer .= '	<li><a href="#" class=""><i class="fa fa-google-plus fa-lg hi-icon" aria-hidden="true"></i></a></li>';
+	$footer .= '</ul>';
+	$footer .= '</section>';
+	$footer .= '<section class="policy">';
+	$footer .= '<ul>';
+	$footer .= '<li><a href="#">Política de Privacidad</a></li>';
+	$footer .= '<li><a href="#">Información Legal</a></li>';
+	$footer .= '<li><a href="#">Términos y Condiciones</a></li>';
+	$footer .= '</ul>';
+	$footer .= '</section>';
+	$footer .= '<section class="Copyright">';
+	$footer .= '<p>© Copyright, Ona</p>';
+	$footer .= '</section>';
+	$footer .= '</footer>';
+
+	return $footer; 	
 
 }
 

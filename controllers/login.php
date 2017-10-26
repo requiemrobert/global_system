@@ -63,33 +63,27 @@ class loginController
 
 	}
 
-	public function getResponseMenu(){
+	public function getMenu(){
 	   
 	  $session_user = ["user_name" => $_SESSION['user_name'],"status" => $_SESSION['status']];
 	  				 
-	  $decode_data = [ 'rc' => 'get_menu', 'data' => $session_user];
-	  $responseJson = json_decode( getWS( json_encode($decode_data) , BASE_URL_WS ) );			  
-	 	
-		 if ($responseJson->rc == 200) {
-		 	return $responseJson->data;
+	  $decode_data    = [ 'rc' => 'get_menu', 'data' => $session_user];
+	
+	  $responseJson   =  getWS(json_encode($decode_data), BASE_URL_WS);
+	  $decodeJsonData = json_decode( $responseJson );			  
+
+		 if ($decodeJsonData->rc == 200) {
+		 	return $decodeJsonData->data;
 		 }else {
 		 	return false;
 		 }	 
 
 	}
 
-	public function getMenu(){
-		
-		$dataOpciones = [];
+	public function setMenu(){
 
-		foreach ($this->getResponseMenu() as $key => $value) {
-				
-		 array_push($dataOpciones, [$key => $value]);
+		$_SESSION['opciones_menu']= $this->getMenu();
 		
-		}
-
-		$_SESSION['opciones_menu'] = $dataOpciones;
-	
 	}
 
 
@@ -98,8 +92,6 @@ class loginController
 $login = new loginController();
 $login->getLogin();
 $login->setSession();
-$login->getMenu();
+$login->setMenu();
 
-/*session_unset();
-session_destroy();*/
 

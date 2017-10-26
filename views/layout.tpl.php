@@ -1,11 +1,3 @@
-<?php 	  
-	
-	if (!isset($_SESSION))
-	{ 
-		session_start();
-	}
-
-?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -71,31 +63,7 @@
 	</div>
 </div>
 
-	<footer>
-
-		<section class="social-media">
-
-			<ul>
-				<li><a href="#" class=""><i class="fa fa-facebook fa-lg hi-icon" aria-hidden="true"></i></a></li>
-				<li><a href="#" class=""><i class="fa fa-twitter fa-lg hi-icon" aria-hidden="true"></i></a></li>
-				<li><a href="#" class=""><i class="fa fa-google-plus fa-lg hi-icon" aria-hidden="true"></i></a></li>
-			</ul>
-
-		</section>
-
-		<section class="policy">
-			 <ul>
-				<li><a href="#">Política de Privacidad</a></li>
-				<li><a href="#">Información Legal</a></li>
-				<li><a href="#">Términos y Condiciones</a></li>
-			 </ul>
-		</section>
-
-		<section class="Copyright">
-			<p>© Copyright, Global</p>
-		</section>
-
-	</footer>
+	<?= render_footer() ?>
 
 </body>
 </html>

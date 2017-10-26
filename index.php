@@ -26,7 +26,10 @@
 		$url = $_GET['url'];
 	}
 
-	//session_start();
+	if (!isset($_SESSION) or is_null($_SESSION) or empty($_SESSION))
+	{ 
+		header("Location: " . BASE_URL ."logout");
+	}
 
 	$request = new Request($url);
 	$request->executeRequest();
