@@ -14,12 +14,15 @@ function render_menu(){
 	$render .= '<li><a href='.BASE_URL.'><i class="fa fa-home fa-lg" aria-hidden="true"></i>';
 	$render .= '<label>Inicio</label></a></li>';
 
-	foreach ($_SESSION['opciones_menu'] as $key => $value) {
+	if ( !empty($_SESSION['opciones_menu']) ) {
+		
+			foreach ($_SESSION['opciones_menu'] as $key => $value) {
 
-		$render .= "<li><a href='". $key ."'>";
-		$render .= "<i class='fa ". menu_ico($key) ." fa-lg' aria-hidden='true'></i>";
-		$render .= "<label>". $key ."</label></a></li>";
+				$render .= "<li><a href='". $key ."'>";
+				$render .= "<i class='fa ". menu_ico($key) ." fa-lg' aria-hidden='true'></i>";
+				$render .= "<label>". $key ."</label></a></li>";
 
+			}	
 	}
 
 	$render .= '</ul>';
@@ -32,13 +35,17 @@ function render_sub_menu($data_opciones = []){
 	
 	$render =   '<ul class="sidebar-menu">';	
 		
-	foreach ($data_opciones as $sub_menu ) {
+	if (!empty($data_opciones) ) {
+	
+		foreach ($data_opciones as $sub_menu ) {
 		
-		$render .=	"<li> <a href='#'>";
-		$render .=  "<i class='fa ". menu_ico($sub_menu)." fa-me' aria-hidden='true'></i>";
-		$render .=  "<label> ". $sub_menu ."</label>";
-		$render .=	"</a></li>";
+			$render .=	"<li> <a href='#'>";
+			$render .=  "<i class='fa ". menu_ico($sub_menu)." fa-me' aria-hidden='true'></i>";
+			$render .=  "<label> ". $sub_menu ."</label>";
+			$render .=	"</a></li>";
 
+		}
+		
 	}
 
 	$render .=  '</ul>';

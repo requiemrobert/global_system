@@ -72,12 +72,23 @@ class loginController
 	  $responseJson   =  getWS(json_encode($decode_data), BASE_URL_WS);
 	  $decodeJsonData = json_decode( $responseJson );			  
 
-		 if ($decodeJsonData->rc == 200) {
-		 	return $decodeJsonData->data;
-		 }else {
-		 	return false;
-		 }	 
+	 	if (is_null($decodeJsonData)) {
+	 		
+	 		return false;
 
+	 	}else{
+
+	 		if ($decodeJsonData->rc == 200) {
+		    
+		    	return $decodeJsonData->data;
+			
+			}else {
+
+			 	return flase;	
+			}
+
+	 	}
+	 		
 	}
 
 	public function setMenu(){
@@ -93,5 +104,4 @@ $login = new loginController();
 $login->getLogin();
 $login->setSession();
 $login->setMenu();
-
 
