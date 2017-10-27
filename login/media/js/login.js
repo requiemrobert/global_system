@@ -24,14 +24,12 @@ function login(form){
    	if (count_empty <= 0) {
 
    		$('.container h1').addClass('form-success')
-                        .fadeOut(300, function(){ 
-                                                 $(this).text("Cargando").show()
-                                                });
+                        .fadeOut(300, function(){ $(this).text("Cargando").show() });
 
   		$('form').fadeOut(500,function() {
 
       	 	$('.container-sk-cube').show(500);
-         callWebService()
+          callWebService();
    	 	});
 
    	}
@@ -80,16 +78,21 @@ function timeAjax(dataJson ){
 
     });
 
-    $login.fail(function() {
+    $login.fail(function(response) {
+      console.log(response); 
       mensajeResponse();
       var title_alerts = "Notificación";
       var mensaje = "No se puede atender su solicitud momento, Consulte con el Departamento de Sistema";
       alertaResponse( title_alerts, icon_danger, alerClassDanger, mensaje, directionShowCenter,3000 );
     });
 
+   /*
+    
     $login.always(function(data) {
        console.log(data);
     });
+
+    */
 
 }
 

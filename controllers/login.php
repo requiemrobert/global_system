@@ -11,6 +11,8 @@ class loginController
 
 	public static $responseJson;
 
+	private $decodeResponse;
+
 	public function __construct(){
 
 		$strJson = $this->decodeRequest(file_get_contents("php://input"));
@@ -37,58 +39,57 @@ class loginController
 
 	public function getLogin(){
 
+		$dataArrayResponse = $this->decodeResponse(self::$responseJson);
+
 		echo self::$responseJson;
+
+		if ($dataArrayResponse['rc'] == 200) {
+				
+			$this->setSession();
+
+		}
+
 	}
 
 	/*
 		return Array[]
 	*/
-	public function decodeResponse(){
+	public function decodeResponse(string $responseJson){
 
-		return json_decode(self::$responseJson);
+		$this->decodeResponse = json_decode($responseJson);	
+
+		if (is_null($this->decodeResponse)) {
+				
+			return false;
+
+		}else{
+
+			return (array)$this->decodeResponse;
+		}
+					
 	}
 
 	public function setSession(){
-		
-		session_start();
-
-		if ($this->decodeResponse()->rc == 200) {
+	
+		if ($this->decodeResponse != false) {
 			
-			foreach ($this->decodeResponse()->data[0] as $key => $value) {
-			
-				$_SESSION[$key] = $value;
+			if ($this->decodeResponse->rc == 200) {
+				session_start();
+				foreach ($this->decodeResponse->data[0] as $key => $value) {
 				
+					$_SESSION[$key] = $value;
+					
+				}
+
+				$this->setMenu();
 			}
+
+		}else{
+
+			return false;
+
 		}
 
-	}
-
-	public function getMenu(){
-	   
-	  $session_user = ["user_name" => $_SESSION['user_name'],"status" => $_SESSION['status']];
-	  				 
-	  $decode_data    = [ 'rc' => 'get_menu', 'data' => $session_user];
-	
-	  $responseJson   =  getWS(json_encode($decode_data), BASE_URL_WS);
-	  $decodeJsonData = json_decode( $responseJson );			  
-
-	 	if (is_null($decodeJsonData)) {
-	 		
-	 		return false;
-
-	 	}else{
-
-	 		if ($decodeJsonData->rc == 200) {
-		    
-		    	return $decodeJsonData->data;
-			
-			}else {
-
-			 	return flase;	
-			}
-
-	 	}
-	 		
 	}
 
 	public function setMenu(){
@@ -97,11 +98,37 @@ class loginController
 		
 	}
 
+	public function getMenu(){
+
+	  $session_user = ["user_name" => $_SESSION['user_name'],"status" => $_SESSION['status']];
+	  				 
+	  $decode_data    = [ 'rc' => 'get_menu', 'data' => $session_user];
+	
+	  $responseJson   =  getWS(json_encode($decode_data), BASE_URL_WS);
+	  $decodeJsonData = json_decode( $responseJson );			  
+
+
+			if (is_null($decodeJsonData)) {
+				
+				return false;
+			
+			}else if ($decodeJsonData->rc == 200) {
+		    
+		    	return $decodeJsonData->data;
+			
+			}else {
+
+			 	return false;	
+			}
+	 		
+	}
 
 }
 
 $login = new loginController();
 $login->getLogin();
-$login->setSession();
-$login->setMenu();
+
+
+
+
 

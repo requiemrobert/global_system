@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="es">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -65,6 +66,7 @@
 		<li></li>
 		<li></li>
 		<li></li>
+		<li></li>
         <li></li>
         <li></li>
         <li></li>
@@ -79,6 +81,6 @@
 </div>
 </main>
 
-<script src="media/	ripple.js"></script>
+<script src="media/js/ripple.js"></script>
 </body>
 </html>
