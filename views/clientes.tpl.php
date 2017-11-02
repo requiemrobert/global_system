@@ -1,18 +1,6 @@
 
 <section class="main">
 		
-<?php	
-
-		foreach ($_SESSION['opciones_menu'] as $key => $value) {
-			
-			print_r($key);
-			echo "<br>";
-			print_r($value);
-			echo "<br>";
-		}
-
-?>
-
 			<!-- 	<form>
 					<fieldset>
 					<legend><?= print_r($sub_menu) ?></legend>

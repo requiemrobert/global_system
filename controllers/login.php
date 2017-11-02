@@ -43,10 +43,8 @@ class loginController
 
 		echo self::$responseJson;
 
-		if ($dataArrayResponse['rc'] == 200) {
-				
+		if ($dataArrayResponse['rc'] == 200){
 			$this->setSession();
-
 		}
 
 	}
@@ -106,7 +104,6 @@ class loginController
 	
 	  $responseJson   =  getWS(json_encode($decode_data), BASE_URL_WS);
 	  $decodeJsonData = json_decode( $responseJson );			  
-
 
 			if (is_null($decodeJsonData)) {
 				
