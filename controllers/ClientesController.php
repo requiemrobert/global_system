@@ -9,12 +9,13 @@ class ClientesController
 		if(isset($data_style))
 		{
 	       unset($data_style);
-	       $data_style = '';
+	       $data_style = [];
+	       $data_javascript = [];
 	    } 
 
-		$data_style = ['normalize','main_style', 'font-awesome'];
+		$data_style = ['normalize','main_style', 'font-awesome', 'gridly.min','clientes'];
 
-		$data_javascript = ['jquery-3.2.0','shop'];
+		$data_javascript = ['jquery-3.2.1.min','clientes'];
 
 		$data_head = array(
 				'data_style' => $data_style,

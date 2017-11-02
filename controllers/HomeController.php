@@ -14,7 +14,7 @@ class HomeController
 
 		$data_style = ['normalize','main_style', 'font-awesome'];
 
-		$data_javascript = ['header','jquery-3.2.0'];
+		$data_javascript = ['header','jquery-3.2.1'];
 
 		$data_head = array(
 				'data_style' => $data_style,

@@ -16,7 +16,7 @@ body{
     background-attachment: fixed;
 /*    background: linear-gradient(to bottom right, #8cc2d8 0%, #b5e8dd 100%);
     background: -webkit-linear-gradient(top left, #8cc2d8 0%, #b5e8dd 100%);*/
-    background-color: #cfd5da;
+    background-color: #ebeff1;
 }
 
 header{
@@ -190,7 +190,7 @@ nav .profile-face{
     justify-content: center;
     align-items: center;
 
-    background-color: #cfd5da;
+    background-color: #ebeff1;
     border-radius: 50%;
     width: 150px;
     height: 150px;
