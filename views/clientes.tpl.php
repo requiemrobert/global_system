@@ -1,7 +1,7 @@
 
 <section class="main">
 		
-		<form>
+		<form id="registrar-cliente">
 			
 			<fieldset>
 			<legend>Datos Clientes</legend>
@@ -87,7 +87,7 @@
 
 			</fieldset>
 
-			<input type="button" id="enviar" value="Registrar">
+			<input type="submit" id="sub_registrar_cliente" value="Registrar">
 		</form>
 
 	

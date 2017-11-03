@@ -1,7 +1,9 @@
 <?php 
+require 'model/connection_ws.php';
 require 'helpers/resolve_opcion.php';
 
-class ClientesController 
+
+class ClientesController extends Connection
 {
 	public function indexAction()
 	{	
@@ -29,6 +31,15 @@ class ClientesController
 									  'data_head' => $data_head, 
 									  'opciones_sub_menu' => $sub_menu
 									]);
+	}
+
+	public function registrarAction()
+	{
+		
+		//print_r(file_get_contents("php://input"));
+
+		echo "----------" . Connection::getWs();
+
 	}
 
 }

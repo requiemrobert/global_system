@@ -14,8 +14,6 @@
  
 body{
     background-attachment: fixed;
-/*    background: linear-gradient(to bottom right, #8cc2d8 0%, #b5e8dd 100%);
-    background: -webkit-linear-gradient(top left, #8cc2d8 0%, #b5e8dd 100%);*/
     background-color: #ebeff1;
 }
 
