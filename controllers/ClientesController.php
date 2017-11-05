@@ -1,9 +1,8 @@
 <?php 
-require 'model/connection_ws.php';
+require 'model/clientesModel.php';
 require 'helpers/resolve_opcion.php';
 
-
-class ClientesController extends Connection
+class ClientesController extends ClientesModel
 {
 	public function indexAction()
 	{	
@@ -36,9 +35,11 @@ class ClientesController extends Connection
 	public function registrarAction()
 	{
 		
-		//print_r(file_get_contents("php://input"));
+		$jsonData = file_get_contents("php://input");
 
-		echo "----------" . Connection::getWs();
+		ClientesModel::decodeRequest($jsonData);
+
+		print_r(ClientesModel::registrarCliente());
 
 	}
 

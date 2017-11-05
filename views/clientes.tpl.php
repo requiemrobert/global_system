@@ -25,7 +25,7 @@
 					<div class="col col-quarter">
 						<div class="content">
 							<label for="ci_cliente">Documento de Identidad</label>
-							<select name="pre_doc_cliente" id="pre_doc_cliente" onchange="changeValueL(this);" class="valid">
+							<select name="pref_doc_cliente" id="pref_doc_cliente" onchange="changeValueL(this);" class="valid">
 			                        <option selected="selected" value="V">V</option>
 									<option value="E">E</option>   
 									<option value="J">J</option> 

@@ -14,6 +14,7 @@ class logoutController
 
 		} catch (Exception $e) {
 			echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+			header("Location: " . BASE_URL ."login/");
 		}
 
 		return "TRUE";
